@@ -6,7 +6,7 @@ namespace rental_Project
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("hi bro");
+            Console.WriteLine("hiss bro");
         }
     }
 }
