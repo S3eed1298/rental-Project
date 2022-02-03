@@ -14,7 +14,7 @@ namespace rental_Project.customers
         {
             this.ID = ID;
             this.numberOfDays = numberOfDays;
-            carModel = theCarModel
+            string carModel = theCarModel
 
         }
     }
