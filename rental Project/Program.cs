@@ -11,7 +11,7 @@ namespace rental_Project
         {
             try
             {
-                string filePath = "customers.txt";
+                string filePath = @"C:\Users\Win 10\Source\Repos\rental-Project\rental Project\customers.txt";
                 List<string> lines = new List<string>();
                 lines = File.ReadAllLines(filePath).ToList();
                 foreach (string line in lines)
