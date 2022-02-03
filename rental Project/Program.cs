@@ -9,14 +9,20 @@ namespace rental_Project
     {
         static void Main(string[] args)
         {
-            string filePath = "customers.txt";
-            List<string> lines = new List<string>();
-            lines = File.ReadAllLines(filePath).ToList();
-            foreach (string line in lines)
+            try
             {
-                Console.WriteLine(line);
+                string filePath = "customers.txt";
+                List<string> lines = new List<string>();
+                lines = File.ReadAllLines(filePath).ToList();
+                foreach (string line in lines)
+                {
+                    Console.WriteLine(line);
+                }
+                Console.ReadLine();
             }
-            Console.ReadLine();
+            catch {
+                Console.WriteLine("error");
+            }
         }
     }
 }
