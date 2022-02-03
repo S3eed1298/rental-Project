@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace rental_Project
 {
@@ -6,7 +9,14 @@ namespace rental_Project
     {
         static void Main(string[] args)
         {
-
+            string filePath = "customers.txt";
+            List<string> lines = new List<string>();
+            lines = File.ReadAllLines(filePath).ToList();
+            foreach (string line in lines)
+            {
+                Console.WriteLine(line);
+            }
+            Console.ReadLine();
         }
     }
 }
