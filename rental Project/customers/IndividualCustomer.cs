@@ -10,12 +10,14 @@ namespace rental_Project.customers
     {
         private T ID;
         private int numberOfDays;
-        public IndividualCustomer(T ID , int numberOfDays , string theCarModel , int CarModelYear , int basePrice  )
+        public IndividualCustomer(T ID, int numberOfDays, string theCarModel, int theCarModelYear, int theBasePrice)
         {
             this.ID = ID;
             this.numberOfDays = numberOfDays;
-            string carModel = theCarModel
-
+            car_model = theCarModel;
+            car_model_year = theCarModelYear;
+            car_base_price = theBasePrice;
         }
+
     }
 }
