@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace rental_Project.customers
 {
-    class CommercialCustomers
+    class CommercialCustomers : Customer
     {
     }
 }

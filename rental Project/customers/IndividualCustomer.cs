@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace rental_Project.customers
 {
-    class IndividualCustomer
+    class IndividualCustomer<T> : Customer
     {
+        public IndividualCustomer(T ID   )
+        {
+
+        }
     }
 }
