@@ -1,0 +1,2 @@
+Individiual,234313213855,10,CarModel,2010,100000
+Commercial,S392054,2,CarModel,2015,250000
