@@ -11,5 +11,7 @@ namespace rental_Project.customers
         private string car_model;
         private int car_model_year;
         private int car_base_price;
+
+
     }
 }
