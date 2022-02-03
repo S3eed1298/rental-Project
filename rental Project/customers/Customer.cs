@@ -8,10 +8,14 @@ namespace rental_Project.customers
 {
     class Customer
     {
-        private string car_model;
-        private int car_model_year;
-        private int car_base_price;
+        protected string car_model;
+        protected int car_model_year;
+        protected int car_base_price;
 
-
+        public static double CalculateDailyPrice(int model_year, double base_price)
+        {
+            double daily_price = base_price / (2022 - model_year);
+            return daily_price;
+        }
     }
 }
