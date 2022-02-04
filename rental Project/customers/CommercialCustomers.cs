@@ -21,7 +21,7 @@ namespace rental_Project.customers
             car_base_price = theBasePrice;
         }
 
-        public static double CommercialTotalPrice()
+        public double CommercialTotalPrice()
         {
             int discount = discountType.DiscountRate;
             int days = this.numberOfMonths * 30;

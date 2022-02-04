@@ -9,5 +9,6 @@ namespace rental_Project.customers
     class GoldMember : IMember
     {
         public int DiscountRate { get; set; }
+        
     }
 }
