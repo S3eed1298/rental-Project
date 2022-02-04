@@ -12,13 +12,14 @@ namespace rental_Project.customers
         private int numberOfMonths { get; }
         private IMember discountType { get; }
 
-        public CommercialCustomers(string ID, int numberOfMonths, string theCarModel, int theCarModelYear, int theBasePrice)
+        public CommercialCustomers(string ID, int numberOfMonths, string theCarModel, int theCarModelYear, int theBasePrice ,IMember memberType)
         {
             this.ID = ID;
             this.numberOfMonths = numberOfMonths;
             car_model = theCarModel;
             car_model_year = theCarModelYear;
             car_base_price = theBasePrice;
+            this.discountType = memberType;
         }
 
         public double CommercialTotalPrice()
