@@ -21,6 +21,11 @@ namespace rental_Project.customers
             car_base_price = theBasePrice;
         }
 
-
+        public void sdsss()
+        {
+            int discount = discountType.DiscountRate;
+            
+        }
+        
     }
 }
