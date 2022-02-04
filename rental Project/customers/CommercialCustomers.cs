@@ -21,11 +21,13 @@ namespace rental_Project.customers
             car_base_price = theBasePrice;
         }
 
-        public void sdsss()
+        public static double CommercialTotalPrice()
         {
             int discount = discountType.DiscountRate;
-            
+            int days = this.numberOfMonths * 30;
+            double dailyPrice = CalculateDailyPrice(days, car_base_price);
+            double totalPrice = dailyPrice * days;
+            return totalPrice;
         }
-        
     }
 }
