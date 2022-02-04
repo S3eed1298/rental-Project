@@ -18,6 +18,11 @@ namespace rental_Project.customers
             car_model_year = theCarModelYear;
             car_base_price = theBasePrice;
         }
-
+        public static double IndividualRentalFee()
+        {
+            double dailyPrice = CalculateDailyPrice(car_model_year, car_base_price);
+            double totalPrice = dailyPrice * this.numberOfDays;
+            return totalPrice;
+        }
     }
 }
