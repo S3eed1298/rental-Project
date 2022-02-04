@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
+
 namespace rental_Project
 {
     class Program
@@ -16,9 +17,13 @@ namespace rental_Project
                 lines = File.ReadAllLines(filePath).ToList();
                 foreach (string line in lines)
                 {
-                    Console.WriteLine(line);
+                    string[] customerInfo = line.Split(",");
+                    if (customerInfo[0].Equals("Individiual"))
+                    {
+                        
+                    }
                 }
-                Console.ReadLine();
+                
             }
             catch {
                 Console.WriteLine("error");
