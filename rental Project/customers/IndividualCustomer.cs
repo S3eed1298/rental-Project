@@ -8,8 +8,8 @@ namespace rental_Project.customers
 {
     class IndividualCustomer<T> : Customer
     {
-        private T ID;
-        private int numberOfDays;
+        private T ID { get; }
+        private int numberOfDays { get;}
         public IndividualCustomer(T ID, int numberOfDays, string theCarModel, int theCarModelYear, int theBasePrice)
         {
             this.ID = ID;
