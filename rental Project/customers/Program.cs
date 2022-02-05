@@ -15,7 +15,7 @@ namespace rental_Project
             try
             {
                 List<Customer> customers = new List<Customer>();
-                string filePath = @"C:\Users\Win 10\Source\Repos\rental-Project\rental Project\customers.txt";
+                string filePath = @"C:\Users\s3eed\Source\Repos\S3eed1298\rental-Project\rental Project\customers\customers.txt";
                 List<string> lines = new List<string>();
                 lines = File.ReadAllLines(filePath).ToList();
                 foreach (string line in lines)
@@ -30,9 +30,9 @@ namespace rental_Project
                                 IndividualCustomer<String> customer = new IndividualCustomer<string>(customerInfo[1], Convert.ToInt32(customerInfo[2]), customerInfo[3], Convert.ToInt32(customerInfo[4]), Convert.ToInt32(customerInfo[5]));
                                 customers.Add(customer);
                             }
-                            else 
+                            else
                             {
-                                IndividualCustomer<int> customer = new IndividualCustomer<int>(Convert.ToInt32(customerInfo[1]), Convert.ToInt32(customerInfo[2]), customerInfo[3], Convert.ToInt32(customerInfo[4]), Convert.ToInt32(customerInfo[5]));
+                                IndividualCustomer<int> customer = new IndividualCustomer<int>((int)Convert.ToInt64(customerInfo[1]), Convert.ToInt32(customerInfo[2]), customerInfo[3], Convert.ToInt32(customerInfo[4]), Convert.ToInt32(customerInfo[5]));
                                 customers.Add(customer);
                             }
                         }
@@ -58,9 +58,11 @@ namespace rental_Project
                     {
                         Console.WriteLine("The customer id is not in appropriate form");
                     }
+
                 }
+
                 int commercialRentalsNum = 0, commercialRentalmonthNum = 0, individualRentalNum = 0,
-                    individualRentalDayNum = 0, individualNonMemberNum = 0, individualMemberNum = 0, 
+                    individualRentalDayNum = 0, individualNonMemberNum = 0, individualMemberNum = 0,
                     silverCommercialNum = 0, goldCommercialNum = 0, platinumCommercialNum = 0;
                 foreach (var customer in customers)
                 {
@@ -103,12 +105,11 @@ namespace rental_Project
                               $"Total number of rentals of silver commercial customers: {silverCommercialNum}\n" +
                               $"Total number of rentals of gold commercial customers: {goldCommercialNum}\n" +
                               $"Total number of rentals of platinum commercial customers: {platinumCommercialNum}\n");
-
             }
-            catch {
+            catch
+            {
                 Console.WriteLine("error");
             }
-
         }
     }
 }
