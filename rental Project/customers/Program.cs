@@ -59,19 +59,50 @@ namespace rental_Project
                         Console.WriteLine("The customer id is not in appropriate form");
                     }
                 }
-                int numb = 1000;
+                int commercialRentalsNum = 0, commercialRentalmonthNum = 0, individualRentalNum = 0,
+                    individualRentalDayNum = 0, individualNonMemberNum = 0, individualMemberNum = 0, 
+                    silverCommercialNum = 0, goldCommercialNum = 0, platinumCommercialNum = 0;
+                foreach (var customer in customers)
+                {
+                    if (customer.GetType() == typeof(IndividualCustomer<>))
+                    {
+                        individualRentalNum++;
+                        if (customer is IndividualCustomer<string>)
+                        {
+                            individualMemberNum++;
+                            individualRentalDayNum += ((IndividualCustomer<string>)customer).numberOfDays;
+                        }
+                        else
+                        {
+                            individualNonMemberNum++;
+                            individualRentalDayNum += ((IndividualCustomer<int>)customer).numberOfDays;
+                        }
+
+                    }
+                    else
+                    {
+                        commercialRentalsNum++;
+                        commercialRentalmonthNum += ((CommercialCustomers)customer).numberOfMonths;
+                        if (((CommercialCustomers)customer).discountType is SilverMember)
+                            silverCommercialNum++;
+                        else if (((CommercialCustomers)customer).discountType is GoldMember)
+                            goldCommercialNum++;
+                        else
+                            platinumCommercialNum++;
+                    }
+                }
 
                 Console.WriteLine("Welcome!");
-                Console.Write($"Total number of cars rented: {numb}\n" +
-                              $"Total number of commercial rentals: {numb}\n" +
-                              $"Total number of commercial rental-month: {numb}\n" +
-                              $"Total number of individual rentals: {numb}\n" +
-                              $"Total number of individual rental-day: {numb}\n" +
-                              $"Total number of rentals of individual non-member customers: {numb}\n" +
-                              $"Total number of rentals of individual member customers: {numb}\n" +
-                              $"Total number of rentals of silver commercial customers: {numb}\n" +
-                              $"Total number of rentals of gold commercial customers: {numb}\n" +
-                              $"Total number of rentals of platinum commercial customers: {numb}\n");
+                Console.Write($"Total number of cars rented: {customers.Count}\n" +
+                              $"Total number of commercial rentals: {commercialRentalsNum}\n" +
+                              $"Total number of commercial rental-month: {commercialRentalmonthNum}\n" +
+                              $"Total number of individual rentals: {individualRentalNum}\n" +
+                              $"Total number of individual rental-day: {individualRentalDayNum}\n" +
+                              $"Total number of rentals of individual non-member customers: {individualNonMemberNum}\n" +
+                              $"Total number of rentals of individual member customers: {individualMemberNum}\n" +
+                              $"Total number of rentals of silver commercial customers: {silverCommercialNum}\n" +
+                              $"Total number of rentals of gold commercial customers: {goldCommercialNum}\n" +
+                              $"Total number of rentals of platinum commercial customers: {platinumCommercialNum}\n");
 
             }
             catch {

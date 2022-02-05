@@ -9,7 +9,9 @@ namespace rental_Project.customers
     class IndividualCustomer<T> : Customer
     {
         private T ID { get; }
-        private int numberOfDays { get;}
+        public int numberOfDays { get;}
+
+        public bool member { get; }
         public IndividualCustomer(T ID, int numberOfDays, string theCarModel, int theCarModelYear, int theBasePrice)
         {
 
@@ -18,6 +20,7 @@ namespace rental_Project.customers
             car_model = theCarModel;
             car_model_year = theCarModelYear;
             car_base_price = theBasePrice;
+            this.member = checkMember();
         }
         public double IndividualTotalPrice()
         {
@@ -25,5 +28,14 @@ namespace rental_Project.customers
             double totalPrice = dailyPrice * this.numberOfDays;
             return totalPrice;
         }
+
+        private bool checkMember()
+        {
+            if (ID.GetType() == typeof(string))
+                return true;
+            else
+                return false;
+        }
     }
+
 }
