@@ -11,3 +11,4 @@ namespace rental_Project.customers
         public int DiscountRate { get; set; }
     }
 }
+
