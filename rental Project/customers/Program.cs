@@ -48,7 +48,18 @@ namespace rental_Project
                         }
                     }
                 }
-                
+                Console.WriteLine("Welcome!");
+                Console.Write($"Total number of cars rented: {numb}\n" +
+                              $"Total number of commercial rentals: {numb}\n" +
+                              $"Total number of commercial rental-month: {numb}\n" +
+                              $"Total number of individual rentals: {numb}\n" +
+                              $"Total number of individual rental-day: {numb}\n" +
+                              $"Total number of rentals of individual non-member customers: {numb}\n" +
+                              $"Total number of rentals of individual member customers: {numb}\n" +
+                              $"Total number of rentals of silver commercial customers: {numb}\n" +
+                              $"Total number of rentals of gold commercial customers: {numb}\n" +
+                              $"Total number of rentals of platinum commercial customers: {numb}\n");
+
             }
             catch {
                 Console.WriteLine("error");
