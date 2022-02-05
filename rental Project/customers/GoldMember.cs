@@ -8,8 +8,11 @@ namespace rental_Project.customers
 {
     class GoldMember : IMember
     {
-        public int DiscountRate { get; set; }
-        
+        public int DiscountRate { get; }
+
+        public GoldMember()
+        {
+            DiscountRate = 25;
+        }
     }
 }
-

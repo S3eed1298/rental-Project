@@ -8,7 +8,11 @@ namespace rental_Project.customers
 {
     class SilverMember : IMember
     {
-        public int DiscountRate { get; set; }
+        public int DiscountRate { get; }
+
+        public SilverMember()
+        {
+            DiscountRate = 20;
+        }
     }
 }
-
