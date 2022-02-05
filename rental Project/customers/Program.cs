@@ -48,6 +48,7 @@ namespace rental_Project
                         }
                     }
                 }
+                int numb = 1000;
                 Console.WriteLine("Welcome!");
                 Console.Write($"Total number of cars rented: {numb}\n" +
                               $"Total number of commercial rentals: {numb}\n" +
