@@ -16,6 +16,13 @@ namespace rental_Project.customers
         {
             return base_price / (2022 - model_year);
         }
+
+        public static int CreateRentalCode()
+        {
+            Random rnd = new Random();
+            int rentalCode = rnd.Next(9999999);
+            return rentalCode;
+        }
     }
 }
 
