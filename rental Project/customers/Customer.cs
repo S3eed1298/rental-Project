@@ -20,7 +20,7 @@ namespace rental_Project.customers
         public static int CreateRentalCode()
         {
             Random rnd = new Random();
-            int rentalCode = rnd.Next(9999999);
+            int rentalCode = rnd.Next(1000000, 9999999);
             return rentalCode;
         }
     }
