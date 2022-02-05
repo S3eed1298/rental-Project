@@ -26,7 +26,7 @@ namespace rental_Project.customers
         {
             int discount = discountType.DiscountRate;
             int days = this.numberOfMonths * 30;
-            double dailyPrice = CalculateDailyPrice(days, car_base_price);
+            double dailyPrice = CalculateDailyPrice(car_model_year, car_base_price);
             double totalPrice = dailyPrice * days;
             return totalPrice;
         }
