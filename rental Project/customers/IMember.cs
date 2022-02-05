@@ -8,6 +8,7 @@ namespace rental_Project.customers
 {
     interface IMember
     {
+
         int DiscountRate { get; set; }
     }
 }

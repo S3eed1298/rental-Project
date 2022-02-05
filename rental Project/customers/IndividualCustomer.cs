@@ -12,6 +12,7 @@ namespace rental_Project.customers
         private int numberOfDays { get;}
         public IndividualCustomer(T ID, int numberOfDays, string theCarModel, int theCarModelYear, int theBasePrice)
         {
+
             this.ID = ID;
             this.numberOfDays = numberOfDays;
             car_model = theCarModel;

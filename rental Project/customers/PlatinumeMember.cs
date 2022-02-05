@@ -8,6 +8,7 @@ namespace rental_Project.customers
 {
     class PlatinumeMember : IMember
     {
+
         public int DiscountRate { get; set; }
     }
 }
