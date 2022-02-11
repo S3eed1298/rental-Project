@@ -9,8 +9,8 @@ namespace rental_Project.customers
     class CommercialCustomers : Customer
     {
         private string ID { get; }
-        public int numberOfMonths { get; }
-        public IMember discountType { get; }
+        public int numberOfMonths { get; set; }
+        public IMember discountType { get; set; }
 
         public CommercialCustomers(string ID, int numberOfMonths, string theCarModel, int theCarModelYear, int theBasePrice ,IMember memberType)
         {
@@ -20,6 +20,7 @@ namespace rental_Project.customers
             car_model_year = theCarModelYear;
             car_base_price = theBasePrice;
             this.discountType = memberType;
+            rentalCode = CreateRentalCode();
         }
 
         public double CommercialTotalPrice()

@@ -25,7 +25,7 @@ namespace rental_Project
                         string[] customerInfo = line.Split(",");
                         if (customerInfo[0].Equals("Individiual"))
                         {
-                            if (customerInfo[1][0].Equals("M"))
+                            if (customerInfo[1][0].Equals('M'))
                             {
                                 IndividualCustomer<String> customer = new IndividualCustomer<string>(customerInfo[1], Convert.ToInt32(customerInfo[2]), customerInfo[3], Convert.ToInt32(customerInfo[4]), Convert.ToInt32(customerInfo[5]));
                                 customers.Add(customer);
@@ -38,17 +38,20 @@ namespace rental_Project
                         }
                         else
                         {
-                            if (customerInfo[1][0].Equals("S"))
+                            if (customerInfo[1][0].Equals('S'))
                             {
                                 CommercialCustomers customer = new CommercialCustomers(customerInfo[1], Convert.ToInt32(customerInfo[2]), customerInfo[3], Convert.ToInt32(customerInfo[4]), Convert.ToInt32(customerInfo[5]), new SilverMember());
+                                customers.Add(customer);
                             }
-                            else if (customerInfo[1][0].Equals("G"))
+                            else if (customerInfo[1][0].Equals('G'))
                             {
                                 CommercialCustomers customer = new CommercialCustomers(customerInfo[1], Convert.ToInt32(customerInfo[2]), customerInfo[3], Convert.ToInt32(customerInfo[4]), Convert.ToInt32(customerInfo[5]), new GoldMember());
+                                customers.Add(customer);
                             }
-                            else if (customerInfo[1][0].Equals("P"))
+                            else if (customerInfo[1][0].Equals('P'))
                             {
                                 CommercialCustomers customer = new CommercialCustomers(customerInfo[1], Convert.ToInt32(customerInfo[2]), customerInfo[3], Convert.ToInt32(customerInfo[4]), Convert.ToInt32(customerInfo[5]), new PlatinumeMember());
+                                customers.Add(customer);
                             }
                             else
                                 throw new Exception();
@@ -56,9 +59,8 @@ namespace rental_Project
                     }
                     catch
                     {
-                        Console.WriteLine("The customer id is not in appropriate form");
+                        Console.WriteLine("The customer id is not in an appropriate form");
                     }
-
                 }
 
                 int commercialRentalsNum = 0, commercialRentalmonthNum = 0, individualRentalNum = 0,
@@ -66,7 +68,7 @@ namespace rental_Project
                     silverCommercialNum = 0, goldCommercialNum = 0, platinumCommercialNum = 0;
                 foreach (var customer in customers)
                 {
-                    if (customer.GetType() == typeof(IndividualCustomer<>))
+                    if (customer is IndividualCustomer<string> || customer is IndividualCustomer<int>)
                     {
                         individualRentalNum++;
                         if (customer is IndividualCustomer<string>)
@@ -91,6 +93,7 @@ namespace rental_Project
                             goldCommercialNum++;
                         else
                             platinumCommercialNum++;
+                        
                     }
                 }
 
@@ -108,8 +111,9 @@ namespace rental_Project
             }
             catch
             {
-                Console.WriteLine("error");
+                Console.WriteLine("Error occures while running");
             }
         }
     }
 }
+

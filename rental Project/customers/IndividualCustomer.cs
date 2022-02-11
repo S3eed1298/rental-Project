@@ -21,6 +21,7 @@ namespace rental_Project.customers
             car_model_year = theCarModelYear;
             car_base_price = theBasePrice;
             this.member = checkMember();
+            rentalCode = CreateRentalCode();
         }
         public double IndividualTotalPrice()
         {
