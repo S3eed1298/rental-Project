@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace rental_Project.customers
+﻿namespace rental_Project.customers
 {
-    interface IMember
+    internal interface IMember
     {
         public int DiscountRate { get; }
     }

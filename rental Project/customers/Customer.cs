@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace rental_Project.customers
 {
-    class Customer
+    internal class Customer
     {
         protected string car_model { get; set; }
         protected int car_model_year { get; set; }
@@ -20,10 +16,9 @@ namespace rental_Project.customers
 
         public static int CreateRentalCode()
         {
-            Random rnd = new Random();
+            var rnd = new Random();
             int rentalCode = rnd.Next(1000000, 9999999);
             return rentalCode;
         }
     }
 }
-
