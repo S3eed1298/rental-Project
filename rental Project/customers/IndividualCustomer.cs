@@ -38,5 +38,4 @@ namespace rental_Project.customers
                 return false;
         }
     }
-
 }
