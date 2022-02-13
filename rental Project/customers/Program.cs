@@ -21,10 +21,8 @@ namespace rental_Project.customers
                 //parse lines
                 foreach (string line in lines)
                 {
-                    try
-                    {
                         string[] customerInfo = line.Split(",");
-                        if (customerInfo[0].Equals("Individiual"))
+                        if (customerInfo[0].Equals("Individual"))
                         {
                             if (customerInfo[1][0].Equals('M'))
                             {
@@ -33,7 +31,7 @@ namespace rental_Project.customers
                                     Convert.ToInt32(customerInfo[2]),
                                     customerInfo[3],
                                     Convert.ToInt32(customerInfo[4]),
-                                    Convert.ToInt32(customerInfo[5]));
+                                    Convert.ToDouble(customerInfo[5]));
                                 customers.Add(customer);
                             }
                             else
@@ -43,7 +41,7 @@ namespace rental_Project.customers
                                     Convert.ToInt32(customerInfo[2]),
                                     customerInfo[3],
                                     Convert.ToInt32(customerInfo[4]),
-                                    Convert.ToInt32(customerInfo[5]));
+                                    Convert.ToDouble(customerInfo[5]));
                                 customers.Add(customer);
                             }
                         }
@@ -56,7 +54,7 @@ namespace rental_Project.customers
                                     Convert.ToInt32(customerInfo[2]),
                                     customerInfo[3],
                                     Convert.ToInt32(customerInfo[4]),
-                                    Convert.ToInt32(customerInfo[5]),
+                                    Convert.ToDouble(customerInfo[5]),
                                     new SilverMember());
                                 customers.Add(customer);
                             }
@@ -67,7 +65,7 @@ namespace rental_Project.customers
                                     Convert.ToInt32(customerInfo[2]),
                                     customerInfo[3],
                                     Convert.ToInt32(customerInfo[4]),
-                                    Convert.ToInt32(customerInfo[5]),
+                                    Convert.ToDouble(customerInfo[5]),
                                     new GoldMember());
                                 customers.Add(customer);
                             }
@@ -78,20 +76,11 @@ namespace rental_Project.customers
                                     Convert.ToInt32(customerInfo[2]),
                                     customerInfo[3],
                                     Convert.ToInt32(customerInfo[4]),
-                                    Convert.ToInt32(customerInfo[5]),
+                                    Convert.ToDouble(customerInfo[5]),
                                     new PlatinumeMember());
                                 customers.Add(customer);
                             }
-                            else
-                            {
-                                throw new Exception();
-                            }
                         }
-                    }
-                    catch
-                    {
-                        Console.WriteLine("The customer id is not in an appropriate form");
-                    }
                 }
 
                 //calculations for printing

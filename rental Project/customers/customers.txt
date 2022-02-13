@@ -1,4 +1,4 @@
-Individual,59876318792,7,Renault Clio,2021,367.00
+Individual,59876318792,7,Renault Clio,2021,367
 Individual,M49876318792,14,Fiat Egea Sedan,2018,372.00
 Commercial,P5369471,6,Seat Arona,2021,502.00
 Commercial,P5369871,3,Opel Astra,2019,521.00

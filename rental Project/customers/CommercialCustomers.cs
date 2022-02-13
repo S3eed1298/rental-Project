@@ -7,7 +7,7 @@
             int numberOfMonths,
             string theCarModel,
             int theCarModelYear,
-            int theBasePrice,
+            double theBasePrice,
             IMember memberType)
         {
             this.ID = ID;

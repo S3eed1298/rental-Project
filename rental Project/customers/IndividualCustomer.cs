@@ -2,7 +2,7 @@
 {
     internal class IndividualCustomer<T> : Customer
     {
-        public IndividualCustomer(T ID, int numberOfDays, string theCarModel, int theCarModelYear, int theBasePrice)
+        public IndividualCustomer(T ID, int numberOfDays, string theCarModel, int theCarModelYear, double theBasePrice)
         {
             this.ID = ID;
             this.numberOfDays = numberOfDays;
