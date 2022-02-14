@@ -1,0 +1,127 @@
+﻿[
+  {
+    "$type": "rental_Project.customers.IndividualCustomer, rental Project",
+    "ID": "59876318792",
+    "numberOfDays": 7,
+    "isMember": false,
+    "car_model": "Renault Clio",
+    "car_model_year": 2021,
+    "car_base_price": 367.0,
+    "rentalCode": 8279719
+  },
+  {
+    "$type": "rental_Project.customers.IndividualCustomer, rental Project",
+    "ID": "M49876318792",
+    "numberOfDays": 14,
+    "isMember": true,
+    "car_model": "Fiat Egea Sedan",
+    "car_model_year": 2018,
+    "car_base_price": 372.0,
+    "rentalCode": 6139137
+  },
+  {
+    "$type": "rental_Project.customers.CommercialCustomers, rental Project",
+    "ID": "P5369471",
+    "numberOfMonths": 6,
+    "discountType": {
+      "$type": "rental_Project.customers.PlatinumeMember, rental Project",
+      "DiscountRate": 30
+    },
+    "car_model": "Seat Arona",
+    "car_model_year": 2021,
+    "car_base_price": 502.0,
+    "rentalCode": 8495028
+  },
+  {
+    "$type": "rental_Project.customers.CommercialCustomers, rental Project",
+    "ID": "P5369871",
+    "numberOfMonths": 3,
+    "discountType": {
+      "$type": "rental_Project.customers.PlatinumeMember, rental Project",
+      "DiscountRate": 30
+    },
+    "car_model": "Opel Astra",
+    "car_model_year": 2019,
+    "car_base_price": 521.0,
+    "rentalCode": 2682005
+  },
+  {
+    "$type": "rental_Project.customers.IndividualCustomer, rental Project",
+    "ID": "M49836318792",
+    "numberOfDays": 1,
+    "isMember": true,
+    "car_model": "Fiat Egea Cross",
+    "car_model_year": 2019,
+    "car_base_price": 377.0,
+    "rentalCode": 4302870
+  },
+  {
+    "$type": "rental_Project.customers.IndividualCustomer, rental Project",
+    "ID": "M49836318722",
+    "numberOfDays": 3,
+    "isMember": true,
+    "car_model": "Hyundai i20",
+    "car_model_year": 2019,
+    "car_base_price": 414.0,
+    "rentalCode": 9594943
+  },
+  {
+    "$type": "rental_Project.customers.CommercialCustomers, rental Project",
+    "ID": "S1234567",
+    "numberOfMonths": 12,
+    "discountType": {
+      "$type": "rental_Project.customers.SilverMember, rental Project",
+      "DiscountRate": 20
+    },
+    "car_model": "Renault Clio",
+    "car_model_year": 2017,
+    "car_base_price": 367.0,
+    "rentalCode": 2779285
+  },
+  {
+    "$type": "rental_Project.customers.IndividualCustomer, rental Project",
+    "ID": "19876318792",
+    "numberOfDays": 5,
+    "isMember": false,
+    "car_model": "Citroen C-Elysee",
+    "car_model_year": 2020,
+    "car_base_price": 423.0,
+    "rentalCode": 3029071
+  },
+  {
+    "$type": "rental_Project.customers.IndividualCustomer, rental Project",
+    "ID": "59876318792",
+    "numberOfDays": 4,
+    "isMember": false,
+    "car_model": "Peugeot 3008",
+    "car_model_year": 2022,
+    "car_base_price": 798.0,
+    "rentalCode": 2166772
+  },
+  {
+    "$type": "rental_Project.customers.CommercialCustomers, rental Project",
+    "ID": "S5698734",
+    "numberOfMonths": 3,
+    "discountType": {
+      "$type": "rental_Project.customers.SilverMember, rental Project",
+      "DiscountRate": 20
+    },
+    "car_model": "Renault Clio",
+    "car_model_year": 2018,
+    "car_base_price": 367.0,
+    "rentalCode": 2368454
+  },
+  {
+    "$type": "rental_Project.customers.CommercialCustomers, rental Project",
+    "ID": "G7896321",
+    "numberOfMonths": 24,
+    "discountType": {
+      "$type": "rental_Project.customers.GoldMember, rental Project",
+      "DiscountRate": 25
+    },
+    "car_model": "Ford Tourneo Courier",
+    "car_model_year": 2020,
+    "car_base_price": 456.0,
+    "rentalCode": 2450788
+  }
+]

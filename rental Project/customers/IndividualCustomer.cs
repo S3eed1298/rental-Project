@@ -1,22 +1,22 @@
 ﻿namespace rental_Project.customers
 {
-    internal class IndividualCustomer<T> : Customer
+    internal class IndividualCustomer : Customer
     {
-        public IndividualCustomer(T ID, int numberOfDays, string theCarModel, int theCarModelYear, double theBasePrice)
+        public IndividualCustomer(string ID, int numberOfDays, string theCarModel, int theCarModelYear, double theBasePrice)
         {
             this.ID = ID;
             this.numberOfDays = numberOfDays;
             car_model = theCarModel;
             car_model_year = theCarModelYear;
             car_base_price = theBasePrice;
-            member = checkMember();
+            isMember = checkMember();
             rentalCode = CreateRentalCode();
         }
 
-        private T ID { get; }
+        public string ID { get; }
         public int numberOfDays { get; }
 
-        public bool member { get; }
+        public bool isMember { get; }
 
         public double IndividualTotalPrice()
         {
@@ -27,11 +27,8 @@
 
         private bool checkMember()
         {
-            if (ID.GetType() == typeof(string))
-            {
+            if (ID[0].Equals('M'))
                 return true;
-            }
-
             return false;
         }
     }

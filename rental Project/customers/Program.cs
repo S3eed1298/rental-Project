@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
+
 
 namespace rental_Project.customers
 {
@@ -9,11 +11,38 @@ namespace rental_Project.customers
     {
         private static void Main(string[] args)
         {
-                List<string> linesOfTheFile = readingTheFile();
-                List<Customer> customers = parsingLines(linesOfTheFile);
-                Dictionary<string, int> values = calculationsForPrinting(customers);
-                Printing(values);
+            RunUsingJson();
+            Console.WriteLine("----------------------------------------------------------------------------------");
+            RunUsingTxt();
+        }
 
+        public static void RunUsingJson()
+        {
+            var fileName = "Data.json";
+            string json = File.ReadAllText(fileName);
+            JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+            List<Customer> deserializedList = JsonConvert.DeserializeObject<List<Customer>>(json, settings);
+            Dictionary<string, int> values = calculationsForPrinting(deserializedList);
+            Printing(values);
+        }
+
+        public static void RunUsingTxt()
+        {
+            Dictionary<string, int> valuess = calculationsForPrinting(ListOfCustomers());
+            Printing(valuess);
+        }
+
+        public static void CreateJsonFile()
+        {
+            JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+            string json2 = JsonConvert.SerializeObject(ListOfCustomers(), Formatting.Indented, settings);
+            Console.WriteLine(json2);
+        }
+
+        public static List<Customer> ListOfCustomers()
+        {
+            List<string> linesOfTheFile = readingTheFile();
+            return parsingLines(linesOfTheFile);
         }
 
         public static void Printing(Dictionary<string,int> values)
@@ -31,9 +60,10 @@ namespace rental_Project.customers
               + $"Total number of rentals of gold commercial customers: {values["goldCommercialNum"]}\n"
               + $"Total number of rentals of platinum commercial customers: {values["platinumCommercialNum"]}\n");
         }
+
         public static List<string> readingTheFile()
         {
-            var filePath = @"customers/customers.txt";
+            var filePath = @"customers.txt";
             var lines = new List<string>();
             lines = File.ReadAllLines(filePath).ToList();
             return lines;
@@ -47,17 +77,17 @@ namespace rental_Project.customers
                 string[] customerInfo = line.Split(",");
                 if (customerInfo[0].Equals("Individual"))
                 {
-                    if (customerInfo[1][0].Equals('M'))
-                    {
-                        var customer = new IndividualCustomer<string>(
-                            customerInfo[1],
-                            Convert.ToInt32(customerInfo[2]),
-                            customerInfo[3],
-                            Convert.ToInt32(customerInfo[4]),
-                            Convert.ToDouble(customerInfo[5]));
-                        customers.Add(customer);
-                    }
-                    else
+                    //if (customerInfo[1][0].Equals('M'))
+                    
+                    var customer = new IndividualCustomer(
+                        customerInfo[1],
+                        Convert.ToInt32(customerInfo[2]),
+                        customerInfo[3],
+                        Convert.ToInt32(customerInfo[4]),
+                        Convert.ToDouble(customerInfo[5]));
+                    customers.Add(customer);
+                    
+                    /*else
                     {
                         var customer = new IndividualCustomer<int>(
                             (int)Convert.ToInt64(customerInfo[1]),
@@ -66,7 +96,7 @@ namespace rental_Project.customers
                             Convert.ToInt32(customerInfo[4]),
                             Convert.ToDouble(customerInfo[5]));
                         customers.Add(customer);
-                    }
+                    }*/
                 }
                 else
                 {
@@ -123,20 +153,15 @@ namespace rental_Project.customers
             values.Add("platinumCommercialNum", 0);
             foreach (Customer customer in customers)
             {
-                if (customer is IndividualCustomer<string> || customer is IndividualCustomer<int>)
+                if (customer is IndividualCustomer)
                 {
 
                     values["individualRentalNum"] = values["individualRentalNum"] + 1;
-                    if (customer is IndividualCustomer<string>)
-                    {
+                    values["individualRentalDayNum"] = values["individualRentalDayNum"] += ((IndividualCustomer)customer).numberOfDays;
+                    if (((IndividualCustomer)customer).isMember)
                         values["individualMemberNum"] = values["individualMemberNum"] + 1;
-                        values["individualRentalDayNum"] = values["individualRentalDayNum"] += ((IndividualCustomer<string>)customer).numberOfDays;
-                    }
                     else
-                    {
                         values["individualNonMemberNum"] = values["individualNonMemberNum"] + 1;
-                        values["individualRentalDayNum"] = values["individualRentalDayNum"] += ((IndividualCustomer<int>)customer).numberOfDays;
-                    }
                 }
                 else
                 {
