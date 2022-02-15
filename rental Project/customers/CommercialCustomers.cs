@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
+using Newtonsoft.Json;
 namespace rental_Project.customers
 {
     internal class CommercialCustomers : Customer
@@ -20,7 +22,6 @@ namespace rental_Project.customers
             DiscountType = memberType;
             rentalCode = CreateRentalCode();
         }
-
         public string ID { get; }
         public int NumberOfMonths { get; set; }
         [JsonProperty(TypeNameHandling = TypeNameHandling.Objects)]

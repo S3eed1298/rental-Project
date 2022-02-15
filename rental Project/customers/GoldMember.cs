@@ -5,8 +5,10 @@
         public GoldMember()
         {
             DiscountRate = 25;
+            MemberString = "Gold";
         }
 
         public int DiscountRate { get; }
+        public string MemberString { get; }
     }
 }

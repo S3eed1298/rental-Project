@@ -1,11 +1,11 @@
 ﻿namespace rental_Project.customers
 {
-    internal class SilverMember : IMember
+    internal class PlatinumMember : IMember
     {
-        public SilverMember()
+        public PlatinumMember()
         {
-            DiscountRate = 20;
-            MemberString = "Silver";
+            DiscountRate = 30;
+            MemberString = "Platinum";
         }
 
         public int DiscountRate { get; }

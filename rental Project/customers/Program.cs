@@ -118,7 +118,7 @@ namespace rental_Project.customers
                             customerInfo[3],
                             Convert.ToInt32(customerInfo[4]),
                             Convert.ToDouble(customerInfo[5]),
-                            new PlatinumeMember());
+                            new PlatinumMember());
                         customers.Add(customer);
                     }
                 }
@@ -181,36 +181,37 @@ namespace rental_Project.customers
             }
             return values;
         }
-        static void print_results(DataTable data)
-        {
-            Console.WriteLine();
-            Dictionary<string, int> colWidths = new Dictionary<string, int>();
-
-            foreach (DataColumn col in data.Columns)
-            {
-                Console.Write(col.ColumnName);
-                var maxLabelSize = data.Rows.OfType<DataRow>()
-                    .Select(m => (m.Field<object>(col.ColumnName)?.ToString() ?? "").Length)
-                    .OrderByDescending(m => m).FirstOrDefault();
-
-                colWidths.Add(col.ColumnName, maxLabelSize);
-                for (int i = 0; i < maxLabelSize - col.ColumnName.Length + 10; i++) Console.Write(" ");
-            }
-
-            Console.WriteLine();
-
-            foreach (DataRow dataRow in data.Rows)
-            {
-                for (int j = 0; j < dataRow.ItemArray.Length; j++)
-                {
-                    Console.Write(dataRow.ItemArray[j]);
-                    for (int i = 0; i < colWidths[data.Columns[j].ColumnName] - dataRow.ItemArray[j].ToString().Length + 10; i++) Console.Write(" ");
-                }
-                Console.WriteLine();
-            }
-        }
+        
         public static void Printing(Dictionary<string, int> values)
         {
+            static void print_results(DataTable data)
+            {
+                Console.WriteLine();
+                Dictionary<string, int> colWidths = new Dictionary<string, int>();
+
+                foreach (DataColumn col in data.Columns)
+                {
+                    Console.Write(col.ColumnName);
+                    var maxLabelSize = data.Rows.OfType<DataRow>()
+                        .Select(m => (m.Field<object>(col.ColumnName)?.ToString() ?? "").Length)
+                        .OrderByDescending(m => m).FirstOrDefault();
+
+                    colWidths.Add(col.ColumnName, maxLabelSize);
+                    for (int i = 0; i < maxLabelSize - col.ColumnName.Length + 10; i++) Console.Write(" ");
+                }
+
+                Console.WriteLine();
+
+                foreach (DataRow dataRow in data.Rows)
+                {
+                    for (int j = 0; j < dataRow.ItemArray.Length; j++)
+                    {
+                        Console.Write(dataRow.ItemArray[j]);
+                        for (int i = 0; i < colWidths[data.Columns[j].ColumnName] - dataRow.ItemArray[j].ToString().Length + 10; i++) Console.Write(" ");
+                    }
+                    Console.WriteLine();
+                }
+            }
             Console.WriteLine("Welcome!");
             Console.Write(
                 $"Total number of cars rented: {values["carsRentedNum"]}\n"
@@ -246,7 +247,7 @@ namespace rental_Project.customers
             commercialRental.Columns.Add("Model Year", typeof(int)).AllowDBNull = false;
             commercialRental.Columns.Add("Rental Price", typeof(double)).AllowDBNull = false;
             DataRow dataRow = null;
-            int individualCounter = 0, commercialCounter = 0;
+            int individualCounter = 1, commercialCounter = 1;
             foreach (var customer in ListOfCustomers())
             {
                 if (customer is CommercialCustomers)
@@ -255,11 +256,12 @@ namespace rental_Project.customers
                     dataRow["NO"] = commercialCounter++;
                     dataRow["Rental Code"] = customer.rentalCode;
                     dataRow["Customer ID"] = ((CommercialCustomers)customer).ID;
-                    dataRow["Customer Type"] = ((CommercialCustomers)customer).DiscountType.GetType();
+                    dataRow["Customer Type"] = ((CommercialCustomers) customer).DiscountType.MemberString;
                     dataRow["Months"] = ((CommercialCustomers)customer).NumberOfMonths;
                     dataRow["Car Model"] = customer.car_model;
                     dataRow["Model Year"] = customer.car_model_year;
                     dataRow["Rental Price"] = ((CommercialCustomers)customer).CommercialTotalPrice();
+                    commercialRental.Rows.Add(dataRow);
                 }
                 else
                 {

@@ -22,7 +22,7 @@
     "ID": "P5369471",
     "numberOfMonths": 6,
     "discountType": {
-      "$type": "rental_Project.customers.PlatinumeMember, rental Project",
+      "$type": "rental_Project.customers.PlatinumMember, rental Project",
       "DiscountRate": 30
     },
     "car_model": "Seat Arona",
@@ -35,7 +35,7 @@
     "ID": "P5369871",
     "numberOfMonths": 3,
     "discountType": {
-      "$type": "rental_Project.customers.PlatinumeMember, rental Project",
+      "$type": "rental_Project.customers.PlatinumMember, rental Project",
       "DiscountRate": 30
     },
     "car_model": "Opel Astra",
