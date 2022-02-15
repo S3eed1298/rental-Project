@@ -13,23 +13,23 @@ namespace rental_Project.customers
             IMember memberType)
         {
             this.ID = ID;
-            this.numberOfMonths = numberOfMonths;
+            this.NumberOfMonths = numberOfMonths;
             car_model = theCarModel;
             car_model_year = theCarModelYear;
             car_base_price = theBasePrice;
-            discountType = memberType;
+            DiscountType = memberType;
             rentalCode = CreateRentalCode();
         }
 
         public string ID { get; }
-        public int numberOfMonths { get; set; }
+        public int NumberOfMonths { get; set; }
         [JsonProperty(TypeNameHandling = TypeNameHandling.Objects)]
-        public IMember discountType { get; set; }
+        public IMember DiscountType { get; set; }
 
         public double CommercialTotalPrice()
         {
-            int discount = discountType.DiscountRate;
-            int days = numberOfMonths * 30;
+            int discount = DiscountType.DiscountRate;
+            int days = NumberOfMonths * 30;
             double dailyPrice = CalculateDailyPrice(car_model_year, car_base_price);
             double totalPrice = dailyPrice * days;
             return totalPrice;

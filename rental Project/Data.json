@@ -1,23 +1,21 @@
 ﻿[
   {
-    "$type": "rental_Project.customers.IndividualCustomer, rental Project",
-    "ID": "59876318792",
+    "$type": "rental_Project.customers.IndividualCustomer`1[[System.Int32, System.Private.CoreLib]], rental Project",
+    "ID": -253223352,
     "numberOfDays": 7,
-    "isMember": false,
     "car_model": "Renault Clio",
     "car_model_year": 2021,
     "car_base_price": 367.0,
-    "rentalCode": 8279719
+    "rentalCode": 7310771
   },
   {
-    "$type": "rental_Project.customers.IndividualCustomer, rental Project",
+    "$type": "rental_Project.customers.IndividualCustomer`1[[System.String, System.Private.CoreLib]], rental Project",
     "ID": "M49876318792",
     "numberOfDays": 14,
-    "isMember": true,
     "car_model": "Fiat Egea Sedan",
     "car_model_year": 2018,
     "car_base_price": 372.0,
-    "rentalCode": 6139137
+    "rentalCode": 1491775
   },
   {
     "$type": "rental_Project.customers.CommercialCustomers, rental Project",
@@ -30,7 +28,7 @@
     "car_model": "Seat Arona",
     "car_model_year": 2021,
     "car_base_price": 502.0,
-    "rentalCode": 8495028
+    "rentalCode": 8496449
   },
   {
     "$type": "rental_Project.customers.CommercialCustomers, rental Project",
@@ -43,27 +41,25 @@
     "car_model": "Opel Astra",
     "car_model_year": 2019,
     "car_base_price": 521.0,
-    "rentalCode": 2682005
+    "rentalCode": 7282071
   },
   {
-    "$type": "rental_Project.customers.IndividualCustomer, rental Project",
+    "$type": "rental_Project.customers.IndividualCustomer`1[[System.String, System.Private.CoreLib]], rental Project",
     "ID": "M49836318792",
     "numberOfDays": 1,
-    "isMember": true,
     "car_model": "Fiat Egea Cross",
     "car_model_year": 2019,
     "car_base_price": 377.0,
-    "rentalCode": 4302870
+    "rentalCode": 6547734
   },
   {
-    "$type": "rental_Project.customers.IndividualCustomer, rental Project",
+    "$type": "rental_Project.customers.IndividualCustomer`1[[System.String, System.Private.CoreLib]], rental Project",
     "ID": "M49836318722",
     "numberOfDays": 3,
-    "isMember": true,
     "car_model": "Hyundai i20",
     "car_model_year": 2019,
     "car_base_price": 414.0,
-    "rentalCode": 9594943
+    "rentalCode": 9581640
   },
   {
     "$type": "rental_Project.customers.CommercialCustomers, rental Project",
@@ -76,27 +72,25 @@
     "car_model": "Renault Clio",
     "car_model_year": 2017,
     "car_base_price": 367.0,
-    "rentalCode": 2779285
+    "rentalCode": 8679556
   },
   {
-    "$type": "rental_Project.customers.IndividualCustomer, rental Project",
-    "ID": "19876318792",
+    "$type": "rental_Project.customers.IndividualCustomer`1[[System.Int32, System.Private.CoreLib]], rental Project",
+    "ID": -1598517688,
     "numberOfDays": 5,
-    "isMember": false,
     "car_model": "Citroen C-Elysee",
     "car_model_year": 2020,
     "car_base_price": 423.0,
-    "rentalCode": 3029071
+    "rentalCode": 3755779
   },
   {
-    "$type": "rental_Project.customers.IndividualCustomer, rental Project",
-    "ID": "59876318792",
+    "$type": "rental_Project.customers.IndividualCustomer`1[[System.Int32, System.Private.CoreLib]], rental Project",
+    "ID": -253223352,
     "numberOfDays": 4,
-    "isMember": false,
     "car_model": "Peugeot 3008",
     "car_model_year": 2022,
     "car_base_price": 798.0,
-    "rentalCode": 2166772
+    "rentalCode": 5031619
   },
   {
     "$type": "rental_Project.customers.CommercialCustomers, rental Project",
@@ -109,7 +103,7 @@
     "car_model": "Renault Clio",
     "car_model_year": 2018,
     "car_base_price": 367.0,
-    "rentalCode": 2368454
+    "rentalCode": 8927718
   },
   {
     "$type": "rental_Project.customers.CommercialCustomers, rental Project",
@@ -122,6 +116,6 @@
     "car_model": "Ford Tourneo Courier",
     "car_model_year": 2020,
     "car_base_price": 456.0,
-    "rentalCode": 2450788
+    "rentalCode": 3515815
   }
 ]
