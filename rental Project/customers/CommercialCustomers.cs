@@ -31,7 +31,7 @@ namespace rental_Project.customers
             int discount = DiscountType.DiscountRate;
             int days = NumberOfMonths * 30;
             double dailyPrice = CalculateDailyPrice(car_model_year, car_base_price);
-            double totalPrice = dailyPrice * days;
+            double totalPrice = dailyPrice * days * (1 - (discount / 100.0));
             return totalPrice;
         }
     }
