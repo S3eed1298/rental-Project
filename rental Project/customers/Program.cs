@@ -226,6 +226,13 @@ namespace rental_Project.customers
               + $"Total number of rentals of silver commercial customers: {values["silverCommercialNum"]}\n"
               + $"Total number of rentals of gold commercial customers: {values["goldCommercialNum"]}\n"
               + $"Total number of rentals of platinum commercial customers: {values["platinumCommercialNum"]}\n");
+
+            DataTable products = new DataTable();
+            products.TableName = "Products";
+            products.Columns.Add("Id", typeof(int)).AllowDBNull = false;
+            products.Columns.Add("ProductName", typeof(string));
+            products.Columns.Add("InStock", typeof(bool));
+            products.Columns.Add("DateAdded", typeof(DateTime));
         }
     }
 }
