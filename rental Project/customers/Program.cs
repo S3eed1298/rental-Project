@@ -13,9 +13,9 @@ namespace rental_Project.customers
         private static void Main(string[] args)
         {
             RunUsingJson();
-            Console.WriteLine("----------------------------------------------------------------------------------");
+            //Console.WriteLine("----------------------------------------------------------------------------------");
             //RunUsingTxt();
-            Console.WriteLine("----------------------------------------------------------------------------------");
+            //Console.WriteLine("----------------------------------------------------------------------------------");
             //CreateJsonFile();
         }
 
@@ -181,6 +181,34 @@ namespace rental_Project.customers
             }
             return values;
         }
+        static void print_results(DataTable data)
+        {
+            Console.WriteLine();
+            Dictionary<string, int> colWidths = new Dictionary<string, int>();
+
+            foreach (DataColumn col in data.Columns)
+            {
+                Console.Write(col.ColumnName);
+                var maxLabelSize = data.Rows.OfType<DataRow>()
+                    .Select(m => (m.Field<object>(col.ColumnName)?.ToString() ?? "").Length)
+                    .OrderByDescending(m => m).FirstOrDefault();
+
+                colWidths.Add(col.ColumnName, maxLabelSize);
+                for (int i = 0; i < maxLabelSize - col.ColumnName.Length + 10; i++) Console.Write(" ");
+            }
+
+            Console.WriteLine();
+
+            foreach (DataRow dataRow in data.Rows)
+            {
+                for (int j = 0; j < dataRow.ItemArray.Length; j++)
+                {
+                    Console.Write(dataRow.ItemArray[j]);
+                    for (int i = 0; i < colWidths[data.Columns[j].ColumnName] - dataRow.ItemArray[j].ToString().Length + 10; i++) Console.Write(" ");
+                }
+                Console.WriteLine();
+            }
+        }
         public static void Printing(Dictionary<string, int> values)
         {
             Console.WriteLine("Welcome!");
@@ -202,7 +230,7 @@ namespace rental_Project.customers
             individualRental.Columns.Add("Rental Code", typeof(int)).AllowDBNull = false;
             individualRental.Columns.Add("Customer ID", typeof(string)).AllowDBNull = false;
             individualRental.Columns.Add("isMember", typeof(bool)).AllowDBNull = false;
-            individualRental.Columns.Add("Number of Days", typeof(int)).AllowDBNull = false;
+            individualRental.Columns.Add("Days", typeof(int)).AllowDBNull = false;
             individualRental.Columns.Add("Car Model", typeof(string)).AllowDBNull = false;
             individualRental.Columns.Add("Model Year", typeof(int)).AllowDBNull = false;
             individualRental.Columns.Add("Rental Price", typeof(double)).AllowDBNull = false;
@@ -213,7 +241,7 @@ namespace rental_Project.customers
             commercialRental.Columns.Add("Rental Code", typeof(int)).AllowDBNull = false;
             commercialRental.Columns.Add("Customer ID", typeof(string)).AllowDBNull = false;
             commercialRental.Columns.Add("Customer Type", typeof(string)).AllowDBNull = false;
-            commercialRental.Columns.Add("Number of Months", typeof(int)).AllowDBNull = false;
+            commercialRental.Columns.Add("Months", typeof(int)).AllowDBNull = false;
             commercialRental.Columns.Add("Car Model", typeof(string)).AllowDBNull = false;
             commercialRental.Columns.Add("Model Year", typeof(int)).AllowDBNull = false;
             commercialRental.Columns.Add("Rental Price", typeof(double)).AllowDBNull = false;
@@ -228,7 +256,7 @@ namespace rental_Project.customers
                     dataRow["Rental Code"] = customer.rentalCode;
                     dataRow["Customer ID"] = ((CommercialCustomers)customer).ID;
                     dataRow["Customer Type"] = ((CommercialCustomers)customer).DiscountType.GetType();
-                    dataRow["Number of Months"] = ((CommercialCustomers)customer).NumberOfMonths;
+                    dataRow["Months"] = ((CommercialCustomers)customer).NumberOfMonths;
                     dataRow["Car Model"] = customer.car_model;
                     dataRow["Model Year"] = customer.car_model_year;
                     dataRow["Rental Price"] = ((CommercialCustomers)customer).CommercialTotalPrice();
@@ -241,7 +269,7 @@ namespace rental_Project.customers
                     dataRow["Customer ID"] = customer is IndividualCustomer<string> ?
                         ((IndividualCustomer<string>)customer).ID : ((IndividualCustomer<int>)customer).ID.ToString();
                     dataRow["isMember"] = customer is IndividualCustomer<string> ? true : false;
-                    dataRow["Number of Days"] = customer is IndividualCustomer<string> ?
+                    dataRow["Days"] = customer is IndividualCustomer<string> ?
                         ((IndividualCustomer<string>)customer).NumberOfDays : ((IndividualCustomer<int>)customer).NumberOfDays;
                     dataRow["Car Model"] = customer.car_model;
                     dataRow["Model Year"] = customer.car_model_year;
@@ -251,13 +279,8 @@ namespace rental_Project.customers
                     individualRental.Rows.Add(dataRow);
                 }
             }
-            foreach (DataRow d in individualRental.Rows)
-            {
-                foreach (var item in d.ItemArray)
-                {
-                    Console.WriteLine(item);
-                }
-            }
+            print_results(individualRental);
+            print_results(commercialRental);
         }
     }
 }
