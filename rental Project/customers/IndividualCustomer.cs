@@ -18,9 +18,10 @@
         public double IndividualTotalPrice()
         {
             double dailyPrice = CalculateDailyPrice(car_model_year, car_base_price);
-            double totalPrice = dailyPrice * NumberOfDays;
-            return totalPrice;
+            if (ID is string)
+                return dailyPrice * NumberOfDays * 0.9;
+            else
+                return dailyPrice * NumberOfDays;
         }
-
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
@@ -13,9 +14,9 @@ namespace rental_Project.customers
         {
             RunUsingJson();
             Console.WriteLine("----------------------------------------------------------------------------------");
-            RunUsingTxt();
+            //RunUsingTxt();
             Console.WriteLine("----------------------------------------------------------------------------------");
-            CreateJsonFile();
+            //CreateJsonFile();
         }
 
         public static void RunUsingJson()
@@ -55,14 +56,15 @@ namespace rental_Project.customers
         }
 
         public static List<Customer> ParsingLines(List<string> fileLines)
-        {            
+        {
             var customers = new List<Customer>();
             foreach (string line in fileLines)
             {
                 string[] customerInfo = line.Split(",");
                 if (customerInfo[0].Equals("Individual"))
                 {
-                    if (customerInfo[1][0].Equals('M')) {
+                    if (customerInfo[1][0].Equals('M'))
+                    {
 
                         var customer = new IndividualCustomer<string>(
                             customerInfo[1],
@@ -72,7 +74,8 @@ namespace rental_Project.customers
                             Convert.ToDouble(customerInfo[5]));
                         customers.Add(customer);
 
-                    } else
+                    }
+                    else
                     {
                         var customer = new IndividualCustomer<int>(
                             (int)Convert.ToInt64(customerInfo[1]),
@@ -81,7 +84,7 @@ namespace rental_Project.customers
                             Convert.ToInt32(customerInfo[4]),
                             Convert.ToDouble(customerInfo[5]));
                         customers.Add(customer);
-                    } 
+                    }
                 }
                 else
                 {
@@ -123,9 +126,9 @@ namespace rental_Project.customers
             return customers;
         }
 
-        public static Dictionary<string,int> DictonaryForCustomersData()
+        public static Dictionary<string, int> DictonaryForCustomersData()
         {
-            Dictionary<string,int> values =  new Dictionary<string, int>();
+            Dictionary<string, int> values = new Dictionary<string, int>();
             values.Add("carsRentedNum", 0);
             values.Add("commercialRentalsNum", 0);
             values.Add("commercialRentalmonthNum", 0);
@@ -138,7 +141,7 @@ namespace rental_Project.customers
             values.Add("platinumCommercialNum", 0);
             return values;
         }
-        public static Dictionary<string,int> CalculationsForPrinting(List<Customer> customers)
+        public static Dictionary<string, int> CalculationsForPrinting(List<Customer> customers)
         {
             Dictionary<string, int> values = DictonaryForCustomersData();
             values["carsRentedNum"] = customers.Count;
@@ -193,12 +196,68 @@ namespace rental_Project.customers
               + $"Total number of rentals of gold commercial customers: {values["goldCommercialNum"]}\n"
               + $"Total number of rentals of platinum commercial customers: {values["platinumCommercialNum"]}\n");
 
-            DataTable products = new DataTable();
-            products.TableName = "Products";
-            products.Columns.Add("Id", typeof(int)).AllowDBNull = false;
-            products.Columns.Add("ProductName", typeof(string));
-            products.Columns.Add("InStock", typeof(bool));
-            products.Columns.Add("DateAdded", typeof(DateTime));
+            DataTable individualRental = new DataTable();
+            individualRental.TableName = "Individual Rentals:";
+            individualRental.Columns.Add("NO", typeof(int)).AllowDBNull = false;
+            individualRental.Columns.Add("Rental Code", typeof(int)).AllowDBNull = false;
+            individualRental.Columns.Add("Customer ID", typeof(string)).AllowDBNull = false;
+            individualRental.Columns.Add("isMember", typeof(bool)).AllowDBNull = false;
+            individualRental.Columns.Add("Number of Days", typeof(int)).AllowDBNull = false;
+            individualRental.Columns.Add("Car Model", typeof(string)).AllowDBNull = false;
+            individualRental.Columns.Add("Model Year", typeof(int)).AllowDBNull = false;
+            individualRental.Columns.Add("Rental Price", typeof(double)).AllowDBNull = false;
+
+            DataTable commercialRental = new DataTable();
+            commercialRental.TableName = "Commercial Rentals:";
+            commercialRental.Columns.Add("NO", typeof(int)).AllowDBNull = false;
+            commercialRental.Columns.Add("Rental Code", typeof(int)).AllowDBNull = false;
+            commercialRental.Columns.Add("Customer ID", typeof(string)).AllowDBNull = false;
+            commercialRental.Columns.Add("Customer Type", typeof(string)).AllowDBNull = false;
+            commercialRental.Columns.Add("Number of Months", typeof(int)).AllowDBNull = false;
+            commercialRental.Columns.Add("Car Model", typeof(string)).AllowDBNull = false;
+            commercialRental.Columns.Add("Model Year", typeof(int)).AllowDBNull = false;
+            commercialRental.Columns.Add("Rental Price", typeof(double)).AllowDBNull = false;
+            DataRow dataRow = null;
+            int individualCounter = 0, commercialCounter = 0;
+            foreach (var customer in ListOfCustomers())
+            {
+                if (customer is CommercialCustomers)
+                {
+                    dataRow = commercialRental.NewRow();
+                    dataRow["NO"] = commercialCounter++;
+                    dataRow["Rental Code"] = customer.rentalCode;
+                    dataRow["Customer ID"] = ((CommercialCustomers)customer).ID;
+                    dataRow["Customer Type"] = ((CommercialCustomers)customer).DiscountType.GetType();
+                    dataRow["Number of Months"] = ((CommercialCustomers)customer).NumberOfMonths;
+                    dataRow["Car Model"] = customer.car_model;
+                    dataRow["Model Year"] = customer.car_model_year;
+                    dataRow["Rental Price"] = ((CommercialCustomers)customer).CommercialTotalPrice();
+                }
+                else
+                {
+                    dataRow = individualRental.NewRow();
+                    dataRow["NO"] = individualCounter++;
+                    dataRow["Rental Code"] = customer.rentalCode;
+                    dataRow["Customer ID"] = customer is IndividualCustomer<string> ?
+                        ((IndividualCustomer<string>)customer).ID : ((IndividualCustomer<int>)customer).ID.ToString();
+                    dataRow["isMember"] = customer is IndividualCustomer<string> ? true : false;
+                    dataRow["Number of Days"] = customer is IndividualCustomer<string> ?
+                        ((IndividualCustomer<string>)customer).NumberOfDays : ((IndividualCustomer<int>)customer).NumberOfDays;
+                    dataRow["Car Model"] = customer.car_model;
+                    dataRow["Model Year"] = customer.car_model_year;
+                    dataRow["Rental Price"] = customer is IndividualCustomer<string> ?
+                        ((IndividualCustomer<string>)customer).IndividualTotalPrice() :
+                        ((IndividualCustomer<int>)customer).IndividualTotalPrice();
+                    individualRental.Rows.Add(dataRow);
+                }
+            }
+            foreach (DataRow d in individualRental.Rows)
+            {
+                foreach (var item in d.ItemArray)
+                {
+                    Console.WriteLine(item);
+                }
+            }
         }
     }
 }
