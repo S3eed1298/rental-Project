@@ -16,6 +16,40 @@ namespace rental_Project.customers
             RunUsingTxt();
             Console.WriteLine("----------------------------------------------------------------------------------");
             CreateJsonFile();
+            string customerInfo = "M43552351254";
+            int numberOfDays = 5;
+            string isMember = "Yes";
+            string notMember = "No";
+            string[] rentals = new String[18];
+            Console.WriteLine("\nIndividual Rentals:\n");
+            int individualCount = 1;
+            Console.WriteLine("No | Rental Code | Customer ID | isMember | Number of Days | Car Model | Model Year | Rental Price");
+            foreach (string customer in rentals)
+            {
+                int listLength = rentals.Length.ToString().Length;
+                int spaces = listLength - individualCount.ToString().Length;
+                string counts = new string(' ', spaces);
+                if (customerInfo[0].Equals('M'))
+                {
+                    if (numberOfDays < 10)
+                    {
+                        Console.Write(counts + individualCount.ToString() + "     " + "5342554" + "     " + customerInfo + "    " + isMember + "             " + numberOfDays.ToString() + "         " + "CarModel" + "      " + "1998" + "          " + "2839" + "\n");
+                    }
+                    else if (numberOfDays < 100 & numberOfDays > 9)
+                    {
+                        Console.Write(counts + individualCount.ToString() + "     " + "5342554" + "     " + customerInfo + "    " + isMember + "            " + numberOfDays.ToString() + "         " + "CarModel" + "      " + "1998" + "          " + "2839" + "\n");
+                    }
+                    else
+                    {
+                        
+                    }
+                }
+                else
+                {
+                    Console.Write(counts + individualCount.ToString() + "     " + "5342554" + "     " + customerInfo + "     " + notMember + "             " + "15" + "         " + "CarModel" + "      " + "1998" + "          " + "2839" + "\n");
+                }
+                individualCount++;
+                }
         }
 
         public static void RunUsingJson()
