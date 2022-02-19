@@ -281,7 +281,10 @@ namespace rental_Project.customers
                     individualRental.Rows.Add(dataRow);
                 }
             }
+
+            Console.Write("\n\nIndividual Rentals:\n");
             print_results(individualRental);
+            Console.Write("\n\nCommercial Rentals:\n");
             print_results(commercialRental);
         }
     }

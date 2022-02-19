@@ -11,7 +11,10 @@ namespace rental_Project.customers
 
         public static double CalculateDailyPrice(int model_year, double base_price)
         {
-            return base_price / (2022 - model_year);
+            if (model_year == 2022)
+                return base_price / (2022 - (model_year - 1));
+            else
+                return base_price / (2022 - (model_year));
         }
         public static int CreateRentalCode()
         {
